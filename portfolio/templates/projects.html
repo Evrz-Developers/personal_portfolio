@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<section class="work" id="work">
+    <div class="row">
+        <h2>My Works</h2>
+        {% for project in projects %}
+        <div class="work__boxes">
+            <!-- Each div with the project_box class is a project. -->
+            <div class="work__box mb-5">
+                <div class="work__text">
+                    <h3>{{project.title}}</h3>
+                    <p>{{project.description|safe|truncatechars:100}}
+                    </p>
+                    <ul class="work__list">
+                        <li>HTML</li>
+                        <li>CSS-Bootstrap</li>
+                        <li>JavaScript</li>
+                        <li>Python-Django</li>
+                    </ul>
+
+                    <div class="work__links">
+                        <a href="{{ project.url }}" target="_blank"
+                           class="link__text mx-5 ">
+                            Visit Site <span>&rarr;</span>
+                        </a>
+                        <a href="https://github.com/robin-private"
+                           title="View Source Code" target="_blank">
+                            <img src="{% static '/assets/github-icon.svg' %}"
+                                 class="project_code" alt="GitHub">
+                        </a>
+                    </div>
+                    <p class="card-text"><small class="text-muted">Last
+                        updated on
+                        {{ project.created_at|date:'jS F Y, h:i a'}}</small></p>
+                </div>
+                <div class="work__image-box">
+                    <img src="{{ project.image.url }}" class="project_image"
+                         alt="Project 1"/>
+                </div>
+            </div>
+        </div><br>
+<hr>
+        {% endfor %}
+    </div>
+</section>
+<a href="{% url 'portfolio:home'%}" class="back-to-top" title="Back to Top">
+    <i class="back-to-top__image bi bi-house-fill"></i>
+</a>
+{% endblock %}

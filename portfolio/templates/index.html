@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!--MAIN-HEADER-->
+<header class="header" role="banner">
+    <div class="header__text-box row">
+        <div class="header__text ">
+            <h1 class="heading-primary">
+                <!-- Replace the following name with your name -->
+                <h2 class="main_title">Hi There,<br/> I'm Robin
+                    <span>Kurian.</span></h2>
+            <p><span class="static-text">I Code </span><span class="typing-text"></span></p>
+            </h1>
+            <a href="#contact" class="contact_btn">Let's talk</a>
+        </div>
+    </div>
+</header>
+<!--MAIN-PAGE-->
+<main role="main">
+    <!--SECTIONS-ABOUT-->
+    <section class="about" id="about">
+        <div class="row">
+            <h2>About Me</h2>
+            <div class="about__content">
+                <div class="about__text">
+                    <h3><small>Software Developer at Cybrosys
+                        Technologies.</small></h3>
+                    <p>With more than 2 years of experience as a skilled Python
+                        and web developer, I specialize in building custom apps
+                        and modules for Cybrosys using Python-Odoo,
+                        and have also worked on exciting
+                        projects such as developing websites and writing
+                        themes.<br> My commitment to quality and continuous
+                        learning
+                        ensures that I deliver exceptional work.I am eager to
+                        collaborate with you on your project and take it to new
+                        heights. Get in touch with me today to discuss your
+                        needs.
+                    </p>
+                    <a href="{{ users.0.resume.url }}" class="btn"
+                       target="_blank">Resume</a>
+                </div>
+                <div class="about__photo-container">
+                    <img class="about__photo"
+                         src="{% static '/assets/images/about_me.jpg' %}">
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!--WORKS-SECTION-->
+<section class="work" id="works">
+    <div class="row">
+        <h2>My Works</h2>
+        {% for project in projects %}
+        <div class="work__boxes d-flex justify-content-center">
+            <div class="work__box mb-5">
+                <div class="work__text">
+                    <h3>{{project.title}}</h3>
+                    <p>{{project.description|safe|truncatechars:100}}
+                    </p>
+                    <ul class="work__list">
+                        <li>HTML</li>
+                        <li>CSS-Bootstrap</li>
+                        <li>JavaScript</li>
+                        <li>Python-Django</li>
+                    </ul>
+                    <div class="work__links">
+                        <a href="{{ project.url }}" target="_blank"
+                           class="link__text mx-5">
+                            Visit Site <span>&rarr;</span>
+                        </a>
+                        <a href="https://github.com/robin-private"
+                           title="View Source Code" target="_blank">
+                            <img src="{% static '/assets/github-icon.svg' %}"
+                                 class="project_code" alt="GitHub">
+                        </a>
+                    </div>
+                    <p class="card-text"><small class="text-muted">Last
+                        updated on
+                        {{ project.created_at|date:'jS F Y, h:i a'}}</small></p>
+                </div>
+                <div class="work__image-box">
+                    <img src="{{ project.image.url }}" class="project_image"
+                         alt="Project 1"/>
+                </div>
+            </div>
+        </div>
+        <br>
+        <hr>
+        <br>
+        <br>
+        {% endfor %}
+    </div>
+</section>
+<!--RETURN TO TOP BUTTON-->
+<a href="#top" id="to_top" class="back-to-top" title="Back to Top">
+    <i class="back-to-top__image bi bi-house-fill"></i>
+</a>
+
+<!--CONTACT ME-SECTION-->
+<section class="contact" id="contact">
+    <div class="row">
+        <h2>Get in Touch</h2>
+        <div class="contact__info">
+            <p>
+                Looking to showcase your business or get professional advice?
+                Reach out to me today! As a responsive and attentive consultant,
+                I can help with any burning questions or offer valuable advice.
+                Email is the most efficient way to get in touch, so don't
+                hesitate - let's start your next venture!
+            </p><br><br>
+
+            <a href="mailto:robin.info@email.com" class="btn">robin.info@email.com</a>
+        </div>
+    </div>
+</section>
+
+<!--FOOTER-SECTION-->
+<footer role="contentinfo" class="footer">
+    <div class="row">
+        <ul class="footer__social-links">
+            <!--            <li class="footer__social-link-item">-->
+            <!--                <a href="https://twitter.com//"-->
+            <!--                   title="Link to Twitter Profile">-->
+            <!--                    <img src="{% static '/assets/twitter.svg' %}"-->
+            <!--                         class="footer__social-image"-->
+            <!--                         alt="Twitter">-->
+            <!--                </a>-->
+            <!--            </li>-->
+            <li class="footer__social-link-item">
+                <a href="https://github.com/robin-private/"
+                   title="Link to Github Profile">
+                    <img src="{% static '/assets/github-icon.svg' %}"
+                         class="footer__social-image"
+                         alt="Github">
+                </a>
+            </li>
+            <li class="footer__social-link-item">
+                <a href=https://www.linkedin.com/in/robin-kurian/">
+                    <img src="{% static '/assets/linkedin.svg' %}"
+                         title="Link to Linkedin Profile"
+                         class="footer__social-image" alt="Linkedin">
+                </a>
+            </li>
+        </ul>
+        <p>
+            Built by <a
+                href="{% url 'portfolio:home'%}#top" class="link">Robin</a>.
+        </p>
+        <!--        <div class="footer__github-buttons">-->
+        <!--            <iframe-->
+        <!--                    src="https://ghbtns.com/github-btn.html?user=rpbin-private&repo=portfolio-template&type=watch&count=true"-->
+        <!--                    frameborder="0" scrolling="0" width="170" height="20"-->
+        <!--                    title="Watch Portfolio Template on GitHub">-->
+        <!--            </iframe>-->
+        <!--        </div>-->
+    </div>
+</footer>
+<!--<a href="{% url 'portfolio:home'%}#top" class="back-to-top" title="Back to Top">-->
+<!--    <i class="back-to-top__image bi bi-arrow-up-circle-fill"></i>-->
+<!--</a>-->
+{% endblock %}
