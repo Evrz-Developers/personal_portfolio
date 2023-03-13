@@ -701,9 +701,37 @@ body:not(.user-is-tabbing) a:focus {
 }
 
 .project_image {
-    border: 5px solid #292929!important;
+    border: 5px solid #292929 !important;
 }
 
+.skill-thumbnail {
+    border: 1px solid #111111;
+    padding: 1px;
+    border-radius: 15%;
+    margin-right: 2.1em;
+}
+
+.skill-thumbnail :hover {
+    transform: scale(1.1);
+}
+
+.skill_box hr {
+    border-top: 1px solid #404040;
+    width: 70%;
+    margin: 0 0 0.7em 3.2em;
+}
+
+.skill_box {
+    /*padding: 1em;*/
+    border: 1px solid var(--pink2);
+    border-radius: 4%;
+    transition: transform 0.2s ease;
+}
+
+.skill_box:hover {
+    /*transform: none;*/
+    transform: scale(1.1);
+}
 
 .bi-person-workspace, .bi-house-fill {
     font-size: 1.5em;
@@ -786,7 +814,6 @@ body:not(.user-is-tabbing) a:focus {
     /*.navbar {*/
     /*    display: none;*/
     /*}*/
-
     .profile_view_medium {
         margin: 0 auto;
         max-width: 100%;

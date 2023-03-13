@@ -65,9 +65,6 @@
                         {% for skill in project.skills.all %}
                         <li>{{ skill.name }}</li>
                         {% endfor %}
-                        <!--                        <li>CSS-Bootstrap</li>-->
-                        <!--                        <li>JavaScript</li>-->
-                        <!--                        <li>Python-Django</li>-->
                     </ul>
                     <div class="work__links">
                         <a href="{{ project.url }}" target="_blank"
@@ -104,21 +101,23 @@
         <h2>Skills</h2>
         {% for skill in skills %}
         {% if forloop.counter0|divisibleby:4 %}
-        <div class="row">
-            {% endif %}
-            <div class="col-md-3 work__boxes">
-                <div class="blog_box p-5 m-3">
+        <!--        <div class="row">-->
+        {% endif %}
+        <div class="col-md-3 mb-5 p-1 work__boxes"">
+            <div class="skill_box mx-3 mb-2 h-100 flex-column">
+                <div>
                     <img class="skill-thumbnail"
-                         src="https://docs.python.org/3/_static/py.svg">
-                    <!--                <img class="skill-thumbnail" src="{{ skill.thumbnail.url }}">-->
-                    <div class="card-body work__text">
-                        <h5 class="card-title">{{ skill.name }}</h5>
-                        <p class="card-text">{{ skill.short_description }}</p>
-                    </div>
+                         src="https://img.icons8.com/color/1x/{{ skill.name|lower }}.png">{{ skill.name }}
+<!--                    <h5 class="card-title mb-3 d-flex justify-content-center">{{ skill.name }}</h5>-->
+                </div>
+                <hr>
+                <div class="card-body work__text  text-center">
+                    <h4 class="card-text p-2">{{ skill.description }}</h4>
                 </div>
             </div>
-            {% if forloop.counter|divisibleby:4 or forloop.last %}
         </div>
+        {% if forloop.counter|divisibleby:4 or forloop.last %}
+        <!--        </div>-->
         {% endif %}
         {% endfor %}
     </div>
