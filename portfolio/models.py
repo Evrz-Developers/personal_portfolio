@@ -31,6 +31,8 @@ class Project(models.Model):
     image = models.ImageField(upload_to='portfolio/images/')
     url = models.URLField(blank=True)
     created_at = models.DateTimeField(default=get_default_created_at)
+    skills = models.ManyToManyField('Skill', blank=True,
+                                    related_name='projects')
 
     def __str__(self):
         return self.title
@@ -41,3 +43,13 @@ class Project(models.Model):
         self.image.save(get_unique_filename(self.image.name), compressed_image,
                         save=False)
         super().save(*args, **kwargs)
+
+
+class Skill(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField(blank=True, null=True)
+    # project = models.ForeignKey(Project, null=True, blank=True, on_delete=models.CASCADE,
+    #                             related_name='related_skills')
+
+    def __str__(self):
+        return self.name

@@ -9,7 +9,8 @@
                 <!-- Replace the following name with your name -->
                 <h2 class="main_title">Hi There,<br/> I'm Robin
                     <span>Kurian.</span></h2>
-            <p><span class="static-text">I Code </span><span class="typing-text"></span></p>
+                <p><span class="static-text">I Code </span><span
+                        class="typing-text"></span></p>
             </h1>
             <a href="#contact" class="contact_btn">Let's talk</a>
         </div>
@@ -61,10 +62,12 @@
                     <p>{{project.description|safe|truncatechars:100}}
                     </p>
                     <ul class="work__list">
-                        <li>HTML</li>
-                        <li>CSS-Bootstrap</li>
-                        <li>JavaScript</li>
-                        <li>Python-Django</li>
+                        {% for skill in project.skills.all %}
+                        <li>{{ skill.name }}</li>
+                        {% endfor %}
+                        <!--                        <li>CSS-Bootstrap</li>-->
+                        <!--                        <li>JavaScript</li>-->
+                        <!--                        <li>Python-Django</li>-->
                     </ul>
                     <div class="work__links">
                         <a href="{{ project.url }}" target="_blank"
@@ -91,6 +94,32 @@
         <hr>
         <br>
         <br>
+        {% endfor %}
+    </div>
+</section>
+<!--WORKS END-->
+<!--SKILLS SECTION-->
+<section class="skill" id="skills">
+    <div class="row">
+        <h2>Skills</h2>
+        {% for skill in skills %}
+        {% if forloop.counter0|divisibleby:4 %}
+        <div class="row">
+            {% endif %}
+            <div class="col-md-3 work__boxes">
+                <div class="blog_box p-5 m-3">
+                    <img class="skill-thumbnail"
+                         src="https://docs.python.org/3/_static/py.svg">
+                    <!--                <img class="skill-thumbnail" src="{{ skill.thumbnail.url }}">-->
+                    <div class="card-body work__text">
+                        <h5 class="card-title">{{ skill.name }}</h5>
+                        <p class="card-text">{{ skill.short_description }}</p>
+                    </div>
+                </div>
+            </div>
+            {% if forloop.counter|divisibleby:4 or forloop.last %}
+        </div>
+        {% endif %}
         {% endfor %}
     </div>
 </section>

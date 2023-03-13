@@ -696,6 +696,10 @@ body:not(.user-is-tabbing) a:focus {
     transform: scale(1.1);
 }
 
+.project_image {
+    border: 5px solid #292929!important;
+}
+
 .profile_view {
     display: none;
 }
@@ -778,10 +782,9 @@ body:not(.user-is-tabbing) a:focus {
 /*MOBILE-LANDSCAPE*/
 @media (orientation: landscape) {
 
-    .navbar {
-        display: none;
-    }
-
+    /*.navbar {*/
+    /*    display: none;*/
+    /*}*/
     .profile_view_medium {
         margin: 0 auto;
         max-width: 100%;

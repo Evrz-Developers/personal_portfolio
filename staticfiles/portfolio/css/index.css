@@ -700,6 +700,11 @@ body:not(.user-is-tabbing) a:focus {
     display: none;
 }
 
+.project_image {
+    border: 5px solid #292929!important;
+}
+
+
 .bi-person-workspace, .bi-house-fill {
     font-size: 1.5em;
     padding: 0;
@@ -778,9 +783,9 @@ body:not(.user-is-tabbing) a:focus {
 /*MOBILE-LANDSCAPE*/
 @media (orientation: landscape) {
 
-    .navbar {
-        display: none;
-    }
+    /*.navbar {*/
+    /*    display: none;*/
+    /*}*/
 
     .profile_view_medium {
         margin: 0 auto;

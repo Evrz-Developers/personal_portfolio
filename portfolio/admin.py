@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.admin import ModelAdmin
-from .models import Project
+from .models import Project, Skill
 
 
 class CustomModelAdmin(ModelAdmin):
@@ -14,6 +14,7 @@ class CustomModelAdmin(ModelAdmin):
     copy_record.short_description = "Duplicate selected record"
 
 
+admin.site.register(Skill)
 admin.site.register(Project)
 admin.site.unregister(Project)
 admin.site.register(Project, CustomModelAdmin)
